@@ -1,6 +1,7 @@
 const core = require('@actions/core');
-const { App } = require('@octokit/app')
-try {
+const { App } = require('@octokit/app');
+
+async function main() {
     const appId = core.getInput('appId');
     const installationId = core.getInput('installationId');
     const privateKey = core.getInput('privateKey');
@@ -14,6 +15,10 @@ try {
     })
 
     core.setOutput("token", installationAccessToken);
-} catch (error) {
-    core.setFailed(error.message);
 }
+
+
+main()
+    .catch(e => {
+        core.setFailed(e.message);
+    })
