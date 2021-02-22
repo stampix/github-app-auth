@@ -3,10 +3,9 @@
 ```yml
 uses: stampix/github-app-auth@v1
 with:
-    appId: ''
-    installationId: ''
-    privateKey: ''
-
+  appId: ${{ secrets.appId }}
+  installationId: ${{ secrets.installationId }}
+  privateKey: ${{ secrets.privateKey }}
 ```
 
 
