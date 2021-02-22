@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Run our job
     steps:
+      - uses: actions/checkout@v2
       - uses: ./
         with:
           appId: ${{ secrets.appId }}
