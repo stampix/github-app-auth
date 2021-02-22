@@ -1,0 +1,18 @@
+name: "Github app auth"
+description: "Authenticate in CI with a Github app"
+inputs:
+  appId:
+    description: "Application ID"
+    required: true
+  installationId:
+    description: "Installation ID"
+    required: true
+  privateKey:
+    description: "Private key"
+    required: true
+outputs:
+  token:
+    description: "The auth token"
+runs:
+  using: "node12"
+  main: "dist/index.js"
