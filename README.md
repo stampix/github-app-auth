@@ -8,6 +8,15 @@
           privateKey: ${{ secrets.privateKey }}
 ```
 
+## Testing locally with `act`
+
+`act` has some issues loading the files, [see for more info](https://github.com/nektos/act/issues/228). Workaround I used is to temporarily add a path to checkout inside the workflow file:
+
+```yml
+      - uses: actions/checkout@v2
+        with:
+          path: "github-app-auth"
+```          
 
 ## Bundling
 
