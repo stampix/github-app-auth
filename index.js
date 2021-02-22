@@ -13,7 +13,7 @@ async function main() {
     })
     const installationAccessToken = await auth({ type: 'installation' })
 
-    core.setOutput("token", installationAccessToken);
+    core.setOutput("token", installationAccessToken.token);
 }
 
 main()
