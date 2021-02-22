@@ -1,17 +1,19 @@
 const core = require('@actions/core');
-const github = require('@actions/github');
-
+const { App } = require('@octokit/app')
 try {
     const appId = core.getInput('appId');
     const installationId = core.getInput('installationId');
     const privateKey = core.getInput('privateKey');
 
-    // TODO: mint the token
+    const app = new App({
+        id: appId,
+        privateKey,
+    })
+    const installationAccessToken = await app.getInstallationAccessToken({
+        installationId: installationId,
+    })
 
-
-    core.setOutput("token", token);
-
-
+    core.setOutput("token", installationAccessToken);
 } catch (error) {
     core.setFailed(error.message);
 }
