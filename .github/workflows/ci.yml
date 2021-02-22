@@ -6,7 +6,7 @@ jobs:
     name: Run our job
     steps:
       - uses: ./
-      - with:
+        with:
           appId: ${{ secrets.appId }}
           installationId: ${{ secrets.installationId }}
           privateKey: ${{ secrets.privateKey }}
