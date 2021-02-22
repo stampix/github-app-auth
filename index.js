@@ -1,17 +1,22 @@
 const core = require('@actions/core');
-const github = require('@actions/github');
+const { createAppAuth } = require('@octokit/auth-app');
 
-try {
+async function main() {
     const appId = core.getInput('appId');
     const installationId = core.getInput('installationId');
     const privateKey = core.getInput('privateKey');
 
-    // TODO: mint the token
+    const auth = await createAppAuth({
+        appId,
+        installationId,
+        privateKey
+    })
+    const installationAccessToken = await auth({ type: 'installation' })
 
-
-    core.setOutput("token", token);
-
-
-} catch (error) {
-    core.setFailed(error.message);
+    core.setOutput("token", installationAccessToken);
 }
+
+main()
+    .catch(e => {
+        core.setFailed(e.message);
+    })

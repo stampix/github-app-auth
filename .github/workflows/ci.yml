@@ -1,0 +1,13 @@
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: Run our job
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          appId: ${{ secrets.appId }}
+          installationId: ${{ secrets.installationId }}
+          privateKey: ${{ secrets.privateKey }}
